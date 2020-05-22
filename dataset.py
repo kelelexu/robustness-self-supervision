@@ -59,12 +59,12 @@ def get_cifar_dataloader(dataset, data_path, batch_size, test_bs, prefetch):
     test_transform = trn.Compose([trn.ToTensor()])
 
     if dataset == 'cifar10':
-        train_data = dset.CIFAR10(data_path, train=True, transform=train_transform)
-        test_data = dset.CIFAR10(data_path, train=False, transform=test_transform)
+        train_data = dset.CIFAR10(data_path, train=True, transform=train_transform,download=True)
+        test_data = dset.CIFAR10(data_path, train=False, transform=test_transform,download=True)
         num_classes = 10
     else:
-        train_data = dset.CIFAR100(data_path, train=True, transform=train_transform)
-        test_data = dset.CIFAR100(data_path, train=False, transform=test_transform)
+        train_data = dset.CIFAR100(data_path, train=True, transform=train_transform,download=True)
+        test_data = dset.CIFAR100(data_path, train=False, transform=test_transform,download=True)
         num_classes = 100
 
     train_loader = torch.utils.data.DataLoader(
